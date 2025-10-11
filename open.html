@@ -1,14 +1,53 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Open in Chrome</title>
+  <title>Opening Wedding Site…</title>
+  <meta name="viewport" content="width=1024, initial-scale=1.0">
+  <style>
+    body {
+      font-family: 'Lato', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #1A2340;
+      color: #F3EAE2;
+      text-align: center;
+      padding: 20px;
+    }
+    .message {
+      max-width: 400px;
+    }
+    a {
+      color: #B99066;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
   <script>
-    // Redirect to Chrome intent link
-    window.location.href = "intent://saisaia.github.io/Paolo_Kim/?desktop=true#Intent;package=com.android.chrome;scheme=https;end";
+    // Automatically redirect to Chrome with desktop parameter
+    function redirectToChrome() {
+      const chromeIntent = "intent://saisaia.github.io/Paolo_Kim/?desktop=true#Intent;package=com.android.chrome;scheme=https;end";
+      window.location.href = chromeIntent;
+
+      // Fallback: After 2 seconds, show manual link if redirect fails
+      setTimeout(() => {
+        document.getElementById('fallback').style.display = 'block';
+      }, 2000);
+    }
   </script>
 </head>
-<body>
-  <p>If not redirected automatically, <a href="https://saisaia.github.io/Paolo_Kim/?desktop=true" target="_blank">click here to open in Chrome</a></p>
+<body onload="redirectToChrome()">
+  <div class="message">
+    <h1>Opening Our Wedding Site…</h1>
+    <p>Please wait while we open the page in <strong>Chrome</strong> for the best view.</p>
+    <p id="fallback" style="display:none;">
+      If it doesn’t open automatically, <a href="https://saisaia.github.io/Paolo_Kim/?desktop=true" target="_blank">click here</a>.
+    </p>
+  </div>
 </body>
 </html>
