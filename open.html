@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Opening Wedding Site…</title>
+  <title>Opening Our Wedding Site…</title>
   <meta name="viewport" content="width=1024, initial-scale=1.0">
   <style>
     body {
@@ -29,24 +29,24 @@
     }
   </style>
   <script>
-    // Automatically redirect to Chrome with desktop parameter
-    function redirectToChrome() {
+    function redirectToSite() {
+      // Attempt to open Chrome via intent (may not work in Messenger)
       const chromeIntent = "intent://saisaia.github.io/Paolo_Kim/?desktop=true#Intent;package=com.android.chrome;scheme=https;end";
       window.location.href = chromeIntent;
 
-      // Fallback: After 2 seconds, show manual link if redirect fails
+      // Fallback: show manual link after 2 seconds
       setTimeout(() => {
         document.getElementById('fallback').style.display = 'block';
       }, 2000);
     }
   </script>
 </head>
-<body onload="redirectToChrome()">
+<body onload="redirectToSite()">
   <div class="message">
     <h1>Opening Our Wedding Site…</h1>
-    <p>Please wait while we open the page in <strong>Chrome</strong> for the best view.</p>
+    <p>For the best experience, please open in <strong>Chrome</strong> and enable Desktop Site.</p>
     <p id="fallback" style="display:none;">
-      If it doesn’t open automatically, <a href="https://saisaia.github.io/Paolo_Kim/?desktop=true" target="_blank">click here</a>.
+      If it doesn’t open automatically, <a href="https://saisaia.github.io/Paolo_Kim/?desktop=true" target="_blank">click here to open in Chrome</a>.
     </p>
   </div>
 </body>
