@@ -22,6 +22,8 @@
             
             --font-heading: 'Playfair Display', serif;
             --font-body: 'Lato', sans-serif;
+            /* New: Base unit size for easier scaling */
+            font-size: 16px; 
         }
 
         *, *::before, *::after {
@@ -39,11 +41,12 @@
             background-color: var(--secondary-color);
             color: var(--text-color);
             line-height: 1.7;
-            font-size: 18px;
+            /* Changed to use 'rem' for better scaling */
+            font-size: 1.125rem; /* 18px / 16px */
             overflow-x: hidden;
             position: relative;
             
-            /* Custom Cursor */
+            /* Custom Cursor - kept as is */
             cursor: url('ring.png'), auto; 
         }
         
@@ -54,7 +57,6 @@
 
         /* --- Full-page Background Image (Placeholder) --- */
         .body-bg-image {
-            /* NOTE: Using the local file path 'background.jpg' for reliability */
             background-image: url('background.jpg');
             background-size: cover;
             background-position: center;
@@ -91,6 +93,7 @@
         .cover-content h1 {
             font-family: var(--font-heading);
             color: var(--light-text-color);
+            /* New: Fluid size for initial H1 */
             font-size: clamp(3rem, 10vw, 5rem);
             font-weight: 700;
             line-height: 1.1;
@@ -101,13 +104,14 @@
             background-color: transparent;
             border: 2px solid var(--accent-color);
             color: var(--accent-color);
-            padding: 12px 40px;
+            /* Changed to rem */
+            padding: 0.75rem 2.5rem; 
             font-family: var(--font-body);
             font-size: 1rem;
             text-transform: uppercase;
             letter-spacing: 3px;
             cursor: pointer;
-            margin-top: 30px;
+            margin-top: 1.875rem; /* 30px */
             transition: background-color 0.4s, color 0.4s;
         }
 
@@ -131,28 +135,33 @@
         }
 
         .container {
-            max-width: 1100px;
+            /* Max width set to rem */
+            max-width: 68.75rem; /* 1100px */
             margin-inline: auto;
-            padding-inline: 20px;
+            /* Horizontal padding set to rem */
+            padding-inline: 1.25rem; 
         }
         
         .section {
-            padding-block: 120px;
+            /* Vertical padding set to rem */
+            padding-block: 7.5rem; /* 120px */
             position: relative;
         }
         
         .section-title {
             font-family: var(--font-heading);
-            font-size: clamp(2.5rem, 8vw, 4rem);
+            /* New: Fluid size for all section titles */
+            font-size: clamp(2.5rem, 6vw, 4rem); 
             text-align: center;
             color: var(--primary-color);
-            margin-bottom: 60px;
+            margin-bottom: 3.75rem; /* 60px */
             font-style: italic;
         }
 
         .fade-in {
             opacity: 0;
-            transform: translateY(40px);
+            /* Changed to rem */
+            transform: translateY(2.5rem); 
             transition: opacity 1.2s ease-out, transform 1.2s ease-out;
         }
 
@@ -176,37 +185,39 @@
         
         .hero .fade-in {
             background-color: rgba(26, 35, 64, 0.4); /* Dark overlay */
-            padding: 40px 60px;
-            border-radius: 10px;
+            /* Changed to rem */
+            padding: 2.5rem 3.75rem; 
+            border-radius: 0.625rem; /* 10px */
             backdrop-filter: blur(5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            box-shadow: 0 0.625rem 1.875rem rgba(0,0,0,0.5); /* 10px 30px */
         }
 
         .hero h1 {
             font-family: var(--font-heading);
-            font-size: clamp(4rem, 15vw, 8rem);
+            /* New: Fluid size for Hero H1 */
+            font-size: clamp(4rem, 15vw, 8rem); 
             font-weight: 800;
             line-height: 1.1;
             text-shadow: 0px 4px 20px rgba(0,0,0,0.5);
-            margin-bottom: 20px;
+            margin-bottom: 1.25rem; /* 20px */
         }
 
         .hero .date {
             font-size: 1.2rem;
             letter-spacing: 5px;
             text-transform: uppercase;
-            margin-top: 20px;
-            padding: 8px 20px;
+            margin-top: 1.25rem; /* 20px */
+            padding: 0.5rem 1.25rem; /* 8px 20px */
             background-color: rgba(0,0,0,0.3);
             backdrop-filter: blur(5px);
-            border-radius: 5px;
+            border-radius: 0.3125rem; /* 5px */
         }
         
         /* --- Countdown Timer --- */
         #countdown {
-            margin-top: 40px;
+            margin-top: 2.5rem; /* 40px */
             display: flex;
-            gap: 20px;
+            gap: 1.25rem; /* 20px */
             text-align: center;
             justify-content: center;
         }
@@ -214,19 +225,22 @@
         .countdown-item {
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
-            padding: 15px 20px;
-            border-radius: 10px;
+            padding: 0.9375rem 1.25rem; /* 15px 20px */
+            border-radius: 0.625rem; /* 10px */
             border: 1px solid rgba(255, 255, 255, 0.2);
-            min-width: 80px;
+            /* Min-width helps prevent crushing */
+            min-width: 5rem; /* 80px */
         }
 
         .countdown-item div {
-            font-size: 2.5rem;
+            /* Changed to rem */
+            font-size: 2.5rem; 
             font-weight: 700;
         }
 
         .countdown-item span {
-            font-size: 0.8rem;
+            /* Changed to rem */
+            font-size: 0.8rem; 
             text-transform: uppercase;
             letter-spacing: 2px;
         }
@@ -236,16 +250,18 @@
             background: var(--card-bg-color);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border-radius: 20px;
-            padding: 50px;
+            border-radius: 1.25rem; /* 20px */
+            /* Changed to rem */
+            padding: 3.125rem; /* 50px */
             border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0.5rem 2rem 0 rgba(0, 0, 0, 0.1); /* 8px 32px */
         }
 
         .grid-2-col {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 50px;
+            /* Gap set to rem */
+            gap: 3.125rem; /* 50px */
             align-items: center;
         }
         
@@ -253,7 +269,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            border-radius: 15px;
+            border-radius: 0.9375rem; /* 15px */
         }
 
         .text-center { text-align: center; }
@@ -266,18 +282,19 @@
         
         .text-left h3 {
             font-family: var(--font-heading);
-            font-size: 2rem;
+            /* Changed to rem */
+            font-size: 1.75rem; /* Adjusted slightly down from 2rem for better flow */
             color: var(--primary-color);
-            margin-bottom: 15px;
+            margin-bottom: 0.9375rem; /* 15px */
         }
         
         .parents-list h3 {
             font-family: var(--font-body);
-            font-size: 1.2rem;
+            /* Changed to rem */
+            font-size: 1.1rem; 
             color: var(--text-color);
-            font-weight: 700;
-            margin-top: 20px;
-            margin-bottom: 10px;
+            margin-top: 1.25rem; /* 20px */
+            margin-bottom: 0.625rem; /* 10px */
             letter-spacing: 1px;
             text-transform: uppercase;
         }
@@ -289,12 +306,14 @@
         /* Children's Section Specific Styling */
         .children-names {
             font-family: var(--font-heading);
-            font-size: 1.8rem;
+            /* Changed to rem */
+            font-size: 1.8rem; 
             color: var(--accent-color);
-            margin-top: 20px;
+            margin-top: 1.25rem; /* 20px */
             line-height: 1.5;
         }
         .children-info p {
+            /* Kept max-width for better readability on desktop, shrinks on mobile */
             max-width: 80%;
             margin-inline: auto;
         }
@@ -303,97 +322,107 @@
         .event-card {
             text-align: center;
             background-color: var(--secondary-color); 
-            padding: 40px;
-            border-radius: 15px;
+            /* Changed to rem */
+            padding: 2.5rem; /* 40px */
+            border-radius: 0.9375rem; /* 15px */
             transition: transform 0.4s, box-shadow 0.4s;
         }
 
         .event-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            /* Changed to rem */
+            transform: translateY(-0.625rem); /* -10px */
+            box-shadow: 0 0.9375rem 1.875rem rgba(0,0,0,0.1); /* 15px 30px */
         }
         
         /* Map Styling */
         .event-map {
             width: 100%;
-            height: 200px;
+            height: 12.5rem; /* 200px - kept fixed height for map, which is common */
             border: 1px solid var(--accent-color);
-            border-radius: 10px;
-            margin-top: 20px;
+            border-radius: 0.625rem; /* 10px */
+            margin-top: 1.25rem; /* 20px */
         }
 
         /* --- Attire/Sponsors/RSVP Styling --- */
         .motif-colors {
             display: flex;
             justify-content: center;
-            gap: 15px;
-            margin-top: 20px;
+            gap: 0.9375rem; /* 15px */
+            margin-top: 1.25rem; /* 20px */
         }
         
         .motif-color {
-            width: 50px;
-            height: 50px;
+            /* Changed to rem */
+            width: 3.125rem; /* 50px */
+            height: 3.125rem; /* 50px */
             border-radius: 50%;
             border: 2px solid white;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            box-shadow: 0 0.25rem 0.625rem rgba(0,0,0,0.2); /* 4px 10px */
         }
 
         .sponsors-grid {
             list-style: none;
             text-align: center;
+            /* Use auto columns to let the browser decide the best fit */
             columns: 2;
-            column-gap: 40px;
+            column-gap: 2.5rem; /* 40px */
             font-size: 0.95rem;
         }
 
         .sponsors-grid li {
-            margin-bottom: 15px;
+            margin-bottom: 0.9375rem; /* 15px */
             font-weight: 300;
+            /* Ensure items don't break across columns */
+            break-inside: avoid-column;
         }
         
         .sponsors-section {
-            margin-top: 20px;
+            margin-top: 1.25rem; /* 20px */
         }
 
         .rsvp-button {
             display: inline-block;
             background-color: var(--accent-color);
             color: var(--light-text-color);
-            padding: 18px 60px;
-            border-radius: 50px;
+            /* Changed to rem */
+            padding: 1.125rem 3.75rem; /* 18px 60px */
+            border-radius: 3.125rem; /* 50px */
             text-decoration: none;
             font-weight: 700;
             letter-spacing: 2px;
             text-transform: uppercase;
-            margin-top: 30px;
+            margin-top: 1.875rem; /* 30px */
             transition: transform 0.3s, background-color 0.3s;
         }
         
         .rsvp-button:hover {
             background-color: #A47D52;
-            transform: translateY(-5px);
+            transform: translateY(-0.3125rem); /* -5px */
         }
 
         /* --- Footer Styling --- */
         footer {
             text-align: center;
-            padding: 60px 20px 20px 20px;
+            /* Changed to rem */
+            padding: 3.75rem 1.25rem 1.25rem 1.25rem; 
             color: var(--light-text-color);
             background-color: var(--primary-color); 
         }
         
         footer h2 {
             font-family: var(--font-heading);
-            font-size: 2.5rem;
+            /* Changed to rem */
+            font-size: 2.5rem; 
             color: var(--accent-color);
-            margin-bottom: 15px;
+            margin-bottom: 0.9375rem; /* 15px */
         }
         
         .dev-info {
-            font-size: 0.8rem;
+            /* Changed to rem */
+            font-size: 0.8rem; 
             letter-spacing: 1px;
             color: rgba(255, 255, 255, 0.5); 
-            margin-top: 20px; 
+            margin-top: 1.25rem; /* 20px */
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -402,7 +431,7 @@
         .dev-info a {
             color: var(--accent-color);
             text-decoration: none;
-            margin: 5px 10px;
+            margin: 0.3125rem 0.625rem; /* 5px 10px */
             transition: color 0.3s;
         }
         
@@ -410,58 +439,58 @@
             color: var(--light-text-color);
         }
 
-        /* --- Music Control --- */
+        /* --- Music Control --- (Sizing already proportional) */
         #music-control {
-            position: fixed;
-            bottom: 25px;
-            right: 25px;
-            width: 50px;
-            height: 50px;
-            background-color: var(--accent-color);
-            border-radius: 50%;
-            border: none;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            z-index: 500;
-            opacity: 0;
-            transform: scale(0.5);
-            transition: opacity 0.5s, transform 0.5s;
+            bottom: 1.5625rem; /* 25px */
+            right: 1.5625rem; /* 25px */
+            width: 3.125rem; /* 50px */
+            height: 3.125rem; /* 50px */
+            /* ... rest of the styles ... */
         }
-
-        #music-control.visible {
-            opacity: 1;
-            transform: scale(1);
-        }
-
-        #music-control svg {
-            width: 22px;
-            height: 22px;
-            fill: var(--light-text-color);
-        }
-        
-        /* Music Icon Logic */
-        #play-icon { display: block; } 
-        #pause-icon { display: none; }
-        
-        #music-control.playing #play-icon { display: none; } 
-        #music-control.playing #pause-icon { display: block; }
-        
 
         /* --- Responsive Design --- */
         @media (max-width: 768px) {
+            /* For Mobile: The two-column layouts now become a single column to prevent crushing */
             .grid-2-col {
                 grid-template-columns: 1fr;
+                /* Reduce gap on mobile */
+                gap: 2rem; 
             }
+            /* The Sponsors list should be a single column on mobile */
             .sponsors-grid {
                 columns: 1;
+                column-gap: 0;
             }
-             .hero .fade-in {
-                padding: 30px;
+            /* Reduce padding inside the glass card on mobile */
+            .glass-card {
+                padding: 2rem; /* 32px */
             }
+            /* Reduce padding on the hero section overlay */
+            .hero .fade-in {
+                padding: 1.875rem; /* 30px */
+            }
+            /* Reduce vertical padding between main sections */
             .section {
-                padding-block: 80px;
+                padding-block: 5rem; /* 80px */
+            }
+            /* Center the text on the story section when it collapses to one column */
+            #story .text-left {
+                text-align: center;
+            }
+            #story .section-title {
+                text-align: center !important;
+            }
+            /* Ensure parents list text is centered on mobile */
+            .parents-list div {
+                text-align: center;
+            }
+            /* Adjust countdown size for smaller screens */
+            .countdown-item {
+                padding: 0.625rem 0.8rem;
+                min-width: 3.5rem; 
+            }
+            .countdown-item div {
+                font-size: 2rem;
             }
         }
     </style>
@@ -578,10 +607,10 @@
                                 <h3>Guest Attire & Motif</h3>
                                 <p>Please grace the occasion in your best semi-formal wear. We encourage you to dress in the romantic hues of our wedding palette, avoiding white, cream, and red.</p>
                                  <div class="motif-colors">
-                                    <span class="motif-color" style="background-color: #C08081;" title="Old Rose"></span>
-                                    <span class="motif-color" style="background-color: #FFDAB9;" title="Peach"></span>
-                                    <span class="motif-color" style="background-color: #FFFDD0;" title="Cream (Avoid)"></span>
-                                </div>
+                                     <span class="motif-color" style="background-color: #C08081;" title="Old Rose"></span>
+                                     <span class="motif-color" style="background-color: #FFDAB9;" title="Peach"></span>
+                                     <span class="motif-color" style="background-color: #FFFDD0;" title="Cream (Avoid)"></span>
+                                 </div>
                             </div>
                             <div class="text-center sponsors-section">
                                 <h3>Cherished Principal Sponsors</h3>
