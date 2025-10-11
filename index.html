@@ -72,6 +72,35 @@
             z-index: -1;
         }
 
+        /* ------------------------------------------- */
+        /* --- NEW: In-App Browser Prompt Styling --- */
+        /* ------------------------------------------- */
+        #browser-prompt {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--accent-color); /* Rose Gold */
+            color: var(--light-text-color);
+            padding: 10px 20px;
+            text-align: center;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            z-index: 10000; /* Extremely high z-index to be on top of everything */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            display: none; /* Hidden by default */
+        }
+
+        .hidden-prompt {
+            display: none !important;
+        }
+
+        /* Ensure the main content starts below the banner if it's visible */
+        body.prompt-visible {
+            /* This value needs to match the height of the #browser-prompt */
+            padding-top: 50px; 
+        }
+
         /* --- Cover Section (Intro Screen) --- */
         #cover {
             position: fixed;
@@ -93,7 +122,7 @@
         .cover-content h1 {
             font-family: var(--font-heading);
             color: var(--light-text-color);
-            /* New: Fluid size for initial H1 */
+            /* Fluid size for initial H1 */
             font-size: clamp(3rem, 10vw, 5rem);
             font-weight: 700;
             line-height: 1.1;
@@ -150,7 +179,7 @@
         
         .section-title {
             font-family: var(--font-heading);
-            /* New: Fluid size for all section titles */
+            /* Fluid size for all section titles */
             font-size: clamp(2.5rem, 6vw, 4rem); 
             text-align: center;
             color: var(--primary-color);
@@ -194,7 +223,7 @@
 
         .hero h1 {
             font-family: var(--font-heading);
-            /* New: Fluid size for Hero H1 */
+            /* Fluid size for Hero H1 */
             font-size: clamp(4rem, 15vw, 8rem); 
             font-weight: 800;
             line-height: 1.1;
@@ -283,7 +312,7 @@
         .text-left h3 {
             font-family: var(--font-heading);
             /* Changed to rem */
-            font-size: 1.75rem; /* Adjusted slightly down from 2rem for better flow */
+            font-size: 1.75rem; 
             color: var(--primary-color);
             margin-bottom: 0.9375rem; /* 15px */
         }
@@ -448,7 +477,7 @@
             /* ... rest of the styles ... */
         }
 
-        /* --- Responsive Design --- */
+        /* --- Responsive Design Media Query --- */
         @media (max-width: 768px) {
             /* For Mobile: The two-column layouts now become a single column to prevent crushing */
             .grid-2-col {
@@ -497,6 +526,10 @@
 </head>
 <body class="body-bg-image">
 
+    <div id="browser-prompt" class="hidden-prompt">
+        <p>👋 **Looks like you're in an in-app browser!** For the best experience (and music!), please tap the **•••** or **⋮** icon and select **"Open in Chrome/Safari"**.</p>
+    </div>
+    
     <div id="cover">
         <div class="cover-content">
             <h1>June Paolo<br>&<br>Kimberly</h1>
@@ -663,6 +696,23 @@
         
         document.addEventListener('DOMContentLoaded', () => {
 
+            // -------------------------------------------
+            // --- NEW: In-App Browser Detection Logic ---
+            // -------------------------------------------
+            function isMessengerInApp() {
+                const ua = navigator.userAgent || navigator.vendor || window.opera;
+                // Detect common webviews that cause issues
+                return ua.indexOf("FBAN/Messenger") > -1 || ua.indexOf("Instagram") > -1 || (ua.indexOf("Line") > -1 && ua.indexOf("Mobile") > -1);
+            }
+
+            const browserPrompt = document.getElementById('browser-prompt');
+
+            if (isMessengerInApp()) {
+                browserPrompt.classList.remove('hidden-prompt');
+                browserPrompt.style.display = 'block';
+                document.body.classList.add('prompt-visible');
+            }
+            
             // --- Content Visibility & Animations ---
             const enterBtn = document.getElementById('enter-btn');
             const cover = document.getElementById('cover');
